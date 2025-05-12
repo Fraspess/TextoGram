@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoginApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="450" Width="820"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
@@ -19,18 +19,102 @@
         AllowsTransparency="True"
         >
     <Grid >
-        <Border Background="Black" Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Border_MouseLeftButtonDown">
-            <DockPanel LastChildFill="True">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Background="#303030" Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Border_MouseLeftButtonDown" Margin="5">
+            <DockPanel LastChildFill="True" Background="Black">
                 <TextBlock Text="TextoGram" Foreground="White" VerticalAlignment="Center" Margin="10,0"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Content="_" Width="40" Click="Minimize_Button"/>
-                    <Button Content="X" Width="40" Click="Close_Button"/>
+                    <Button Content="_" Width="50" Click="Minimize_Button" Background="#646A6A"/>
+                    <Button Content="▣" Width="50" Click="Maximize_Button" Background="#646A6A"/>
+                    <Button Content="X" Width="50" Click="Close_Button" Background="#646A6A"/>
                 </StackPanel>
             </DockPanel>
         </Border>
 
-        <Grid>
-            
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Background="#303030" >
+                <TextBox Margin="10" Height="30" />
+
+                <!--<ListBox Name="ChatListBox" Background="#F37216" BorderThickness="0" Foreground="White" SelectionChanged="ChatListBoxSelection_Changed">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Content="{Binding Title}" Grid.Column="0"/>
+                                <Label Content="{Binding LastMessage}" Grid.Column="1"/>
+
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>-->
+
+
+                <ListBox Name="ChatListBox" Background="#F37216" BorderThickness="0" Foreground="White" 
+                ItemsSource="{Binding chatsinfo}" SelectionChanged="ChatListBoxSelection_Changed">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="5">
+                                <TextBlock Text="{Binding Title}" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding LastMessage}" FontStyle="Italic" Margin="5,0,0,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+
+            <Grid Grid.Column="1" Background="#303030">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="{Binding SelectedChat.Title, FallbackValue='Select chat:'}" 
+               FontSize="16" Foreground="White" Margin="10" Grid.Row="0"/>
+
+                <Border CornerRadius="10" Padding="2" Grid.Column="1" Grid.Row="1" BorderThickness="1" BorderBrush="Gray" Background="Gray">
+                    <ListBox ItemsSource="{Binding SelectedChat.Messages, FallbackValue={x:Null}}" 
+             Background="#D5D3D6" Margin="10" Grid.Row="1">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="5">
+                                    <TextBlock Text="{Binding message}"  Foreground="Black"/>
+                                    <TextBlock Text="{Binding time}" FontStyle="Italic" Foreground="Black"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Border>
+
+                <Grid Margin="10" Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="MessageTextBox" Grid.Column="1" Height="30" Background="#303030"/>
+                    <Button Content="Send" Click="SendMessage_Btn" 
+                Height="30" Grid.Column="2" Background="#F37216" Margin="5,0,0,0"/>
+                </Grid>
+            </Grid>
         </Grid>
     </Grid>
 </Window>

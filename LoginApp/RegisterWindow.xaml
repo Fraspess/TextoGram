@@ -22,11 +22,11 @@ FontFamily="{DynamicResource MaterialDesignFont}"
         <Grid>
             <Grid >
                 <Border Background="Black" Height="30" VerticalAlignment="Top" MouseLeftButtonDown="Border_MouseLeftButtonDown">
-                    <DockPanel LastChildFill="True">
+                    <DockPanel LastChildFill="True" >
                         <TextBlock Text="TextoGram" Foreground="White" VerticalAlignment="Center" Margin="10,0"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Button Content="_" Width="40" Click="Minimize_Button"/>
-                            <Button Content="X" Width="40" Click="Close_Button"/>
+                            <Button Content="_" Width="40" Click="Minimize_Button" Background="#646A6A"/>
+                            <Button Content="X" Width="40" Click="Close_Button" Background="#646A6A"/>
                         </StackPanel>
                     </DockPanel>
                 </Border>
@@ -49,6 +49,9 @@ FontFamily="{DynamicResource MaterialDesignFont}"
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
@@ -57,8 +60,12 @@ FontFamily="{DynamicResource MaterialDesignFont}"
 
                             <Label Grid.Row="3" Content="Password:" HorizontalContentAlignment="Center"/>
                             <TextBox Grid.Row="4" Name="PasswordTextBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="300"/>
+                            <Label Grid.Row="5" Content="Confirm Password:" HorizontalContentAlignment="Center"/>
+                            <TextBox Grid.Row="6" Name="Password2TextBox" Width="300" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
-                            <Button Grid.Row="5" Content="Already have an account? Login now" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Login_Button"/>
+                            <Button Content="Register" Grid.Row="7" Width="300" Click="Register_Button"/>
+
+                            <Button Grid.Row="8" Content="Already have an account? Login now" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Login_Button"/>
                         </Grid>
                     </DockPanel>
                 </Grid>

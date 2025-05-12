@@ -55,7 +55,7 @@ FontFamily="{DynamicResource MaterialDesignFont}"
                     <TextBox Grid.Row="2" Name="LoginTextBox" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="300"/>
 
                     <Label Grid.Row="3" Content="Password:" HorizontalContentAlignment="Center"/>
-                    <TextBox Grid.Row="4" Name="PasswordTextBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="300"/>
+                    <PasswordBox Grid.Row="4" Name="PasswordTextBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="300"/>
 
                     <Button Content="Login" Click="Login_Button" Grid.Row="5" Width="200"/>
                     <Button Grid.Row="6" Content="Haven't registered yet? Register now" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Register_Button"/>
